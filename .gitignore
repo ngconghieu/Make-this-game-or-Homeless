@@ -76,4 +76,3 @@ crashlytics-build.properties
 
 # my ignored folder
 DownloadedAssets/*
-!DownloadedAssets/.gitkeep
