@@ -75,4 +75,4 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # my ignored folder
-DownloadedAssets/*
+DownloadedAssets/
