@@ -74,8 +74,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-/[Aa]ssets/[Dd]ownloadedAssets/
-/[Aa]ssets/[Dd]ownloadedAssets.meta
 # my ignored folder
-DownloadedAssets/*
-!DownloadedAssets/.gitkeep
+/[Aa]ssets/[Dd]ownloadedAssets.meta
+/[Aa]ssets/[Dd]ownloadedAssets/*
+!/[Aa]ssets/[Dd]ownloadedAssets/.gitkeep
