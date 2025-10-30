@@ -78,3 +78,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Dd]ownloadedAssets.meta
 /[Aa]ssets/[Dd]ownloadedAssets/*
 !/[Aa]ssets/[Dd]ownloadedAssets/.gitkeep
+
+/[Aa]ssets/_test.meta
+/[Aa]ssets/_test/
