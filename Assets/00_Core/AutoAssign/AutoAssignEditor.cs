@@ -3,11 +3,11 @@ using UnityEditor;
 using UnityEngine;
 
 // true means this can be use for child classes of AutoAssignBase, except they have a custom separately
-[CustomEditor(typeof(AutoAssignBase), true)]
-public class AutoAssignBaseEditor : Editor
+[CustomEditor(typeof(MonoBehaviour), true)]
+public class AutoAssignEditor : Editor
 {
     // A param to access to MonoBehaviour
-    private AutoAssignBase TargetBase => (AutoAssignBase)target;
+    private MonoBehaviour TargetBase => (MonoBehaviour)target;
 
     // Draw Inspector interface 
     public override void OnInspectorGUI()
@@ -30,7 +30,7 @@ public class AutoAssignBaseEditor : Editor
     }
 
     // Logic assign component using reflection
-    private void AutoAssignComponents(AutoAssignBase targetScript)
+    private void AutoAssignComponents(MonoBehaviour targetScript)
     {
         // Undo
         Undo.RecordObject(targetScript, "Auto Assign Components");
@@ -44,7 +44,7 @@ public class AutoAssignBaseEditor : Editor
         foreach (FieldInfo field in fields)
         {
             // Check is this param have [AutoAssign}
-            if (field.GetCustomAttribute<AutoAssign>() != null)
+            if (field.GetCustomAttribute<AutoAssignAttribute>() != null)
             {
                 System.Type componentType = field.FieldType;
                 Component component = null;
@@ -73,4 +73,9 @@ public class AutoAssignBaseEditor : Editor
         EditorUtility.SetDirty(targetScript);
         Debug.Log($"[AutoAssign] Successfully assigned {assignedCount} components for {targetScript.GetType().Name} on {targetScript.name}.");
     }
+}
+
+public class AutoAssignAttribute : PropertyAttribute
+{
+
 }
