@@ -1624,7 +1624,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 485041246}
-  - component: {fileID: 485041245}
+  - component: {fileID: 485041247}
+  - component: {fileID: 485041248}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
@@ -1632,19 +1633,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &485041245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 485041244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ab1482ef465c074dbae3f4dffcbead4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InputManager
-  MoveInput: {x: 0, y: 0}
 --- !u!4 &485041246
 Transform:
   m_ObjectHideFlags: 0
@@ -1660,6 +1648,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &485041247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485041244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab1482ef465c074dbae3f4dffcbead4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputManager
+--- !u!114 &485041248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485041244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8210b5f638413e469add4696ee38363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputHandler
+  inputReader: {fileID: 485041247}
+  bufferTime: 0.2
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1892,8 +1906,8 @@ GameObject:
   - component: {fileID: 1131482478}
   - component: {fileID: 1131482480}
   - component: {fileID: 1131482479}
-  - component: {fileID: 1131482482}
   - component: {fileID: 1131482481}
+  - component: {fileID: 1131482482}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1999,9 +2013,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1131482477}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0edc6877bb4901c489d227e52e548234, type: 3}
+  m_Script: {fileID: 11500000, guid: bd426052493c503488cae9a108f4efb8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCtrl
+  rb: {fileID: 1131482479}
+  boxCollider: {fileID: 1131482480}
+  animator: {fileID: 1579561833}
+  playerController: {fileID: 1131482482}
 --- !u!114 &1131482482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2011,13 +2029,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1131482477}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd426052493c503488cae9a108f4efb8, type: 3}
+  m_Script: {fileID: 11500000, guid: 0edc6877bb4901c489d227e52e548234, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerCtrl
-  rb: {fileID: 1131482479}
-  boxCollider: {fileID: 1131482480}
-  animator: {fileID: 1579561833}
-  playerController: {fileID: 1131482481}
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  MoveInput: {x: 0, y: 0}
 --- !u!1 &1422855420
 GameObject:
   m_ObjectHideFlags: 0

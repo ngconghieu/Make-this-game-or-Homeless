@@ -9,14 +9,14 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
 
     private void LoadInstance()
     {
-        if (Instance != null)
+        if (Instance == null)
         {
-            Debug.LogError($"Instance of {typeof(T).Name} already exists. Destroying duplicate.");
-            Destroy(gameObject);
-            return;
-
+            DontDestroyOnLoad(gameObject);
+            Instance = this as T;
         }
-        DontDestroyOnLoad(gameObject);
-        Instance = this as T;
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

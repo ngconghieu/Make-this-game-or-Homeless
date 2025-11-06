@@ -65,7 +65,8 @@ public class AutoAssignEditor : Editor
                 }
                 else
                 {
-                    Debug.LogError($"[AutoAssign] Failed to find component {componentType.Name} on {targetScript.name}");
+                    //Debug.LogError($"[AutoAssign] Failed to find component {componentType.Name} on {targetScript.name}");
+                    throw new System.Exception($"[AutoAssign] Failed to find component {componentType.Name} on {targetScript.name}");
                 }
             }
         }
