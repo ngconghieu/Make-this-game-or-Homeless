@@ -2032,6 +2032,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0edc6877bb4901c489d227e52e548234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  rb: {fileID: 1131482479}
+  boxCollider: {fileID: 1131482480}
+  animator: {fileID: 1579561833}
   MoveInput: {x: 0, y: 0}
 --- !u!1 &1422855420
 GameObject:
