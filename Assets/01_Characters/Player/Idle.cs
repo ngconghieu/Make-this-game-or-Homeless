@@ -5,10 +5,9 @@ public class Idle : State
     {
         this.ctx = ctx;
     }
-    //protected override void OnEnter()
-    //{
-    //    base.OnEnter();
-    //    player.SetVelocityX(0);
-    //    player.Anim.Play("Idle");
-    //}
+    protected override void OnEnter()
+    {
+        //player.SetVelocityX(0);
+        //player.Anim.Play("Idle");
+    }
 }

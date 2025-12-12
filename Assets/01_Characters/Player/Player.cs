@@ -13,6 +13,14 @@ public class Player : MonoBehaviour
     StateMachine machine;
     State root;
 
+    private void Awake()
+    {
+        // HSM
+        root = new PlayerRoot(null, ctx);
+        var builder = new StateMachineBuilder(root);
+        machine = builder.Build();
+    }
+
     private void Start()
     {
         input = ServiceLocator.Get<IInputProvider>();
@@ -35,18 +43,18 @@ public class Player : MonoBehaviour
             input.ConsumeDashBuffer();
         }
 
-        // for HSM
-        root = new PlayerRoot(null, ctx);
-        var builder = new StateMachineBuilder(root);
-        machine = builder.Build();
+        machine.Tick(Time.deltaTime);
     }
 
 }
 
 [Serializable]
-public struct PlayerContext
+public class PlayerContext
 {
     public Rigidbody2D rb;
     public Animator animator;
     public IInputProvider input;
+
+    public float jumpForce = 10f;
+    public float moveSpeed = 5f;
 }

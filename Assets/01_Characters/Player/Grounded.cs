@@ -14,6 +14,7 @@ public class Grounded : State
     protected override State InitialState() => Idle;
     protected override State GetTransition()
     {
-        return ((PlayerRoot)Parent).AirBorne;
+        //return ((PlayerRoot)Parent).AirBorne;
+        return this;
     }
 }

@@ -20,15 +20,15 @@ public class StateMachineBuilder
     void Wire(State state, StateMachine machine, HashSet<State> visited)
     {
         if (state == null) return;
-        if (!visited.Add(state)) return;
+        if (!visited.Add(state)) return; // state already wired
 
-        var flags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.FlattenHierarchy;
+        var flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.FlattenHierarchy;
         var machineField = typeof(State).GetField("Machine", flags);
         machineField?.SetValue(state, machine);
 
         foreach(var fld in state.GetType().GetFields(flags))
         {
-            if (typeof(State).IsAssignableFrom(fld.FieldType)) continue;
+            if (!typeof(State).IsAssignableFrom(fld.FieldType)) continue;
             if (fld.Name == "Parent") continue;
 
             var child = (State)fld.GetValue(state);
