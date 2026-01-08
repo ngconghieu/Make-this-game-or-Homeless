@@ -15,6 +15,14 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+        boxCollider.offset = new Vector2 ((float)-0.1, 1);
+        boxCollider.size = new Vector2 ((float)0.6, (float)2.001);
+
+        ctx.rb = rb;
+        ctx.animator = animator;
+        ctx.boxCollider = boxCollider;
+
         // HSM
         root = new PlayerRoot(null, ctx);
         var builder = new StateMachineBuilder(root);
@@ -53,6 +61,7 @@ public class PlayerContext
 {
     public Rigidbody2D rb;
     public Animator animator;
+    public BoxCollider2D boxCollider;
     public IInputProvider input;
 
     public float jumpForce = 10f;
