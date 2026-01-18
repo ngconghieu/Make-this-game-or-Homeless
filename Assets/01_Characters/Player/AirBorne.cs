@@ -6,4 +6,7 @@
     {
         this.ctx = ctx;
     }
+
+    //protected override State InitialState() => null;
+    //protected override State GetTransition() => ctx.isGrounded ? ((PlayerRoot)Parent).Grounded : null;
 }

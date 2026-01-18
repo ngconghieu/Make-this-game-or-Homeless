@@ -12,11 +12,9 @@ public abstract class State
         Parent = parent;
     }
 
-    // Initial child will run when this state starts (null == leaf)
-    protected virtual State InitialState() => null;
+    protected virtual State InitialState() => null; // Initial child will run when this state starts (null == leaf)
 
-    // Target state for transition (null == no transition)
-    protected virtual State GetTransition() => null;
+    protected virtual State GetTransition() => null; // Target state for transition (null == no transition)
 
     // lifecycle hooks
     protected virtual void OnEnter() { }

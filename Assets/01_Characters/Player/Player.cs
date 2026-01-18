@@ -13,11 +13,13 @@ public class Player : MonoBehaviour
     StateMachine machine;
     State root;
 
+    string lastPath;
+
     private void Awake()
     {
         rb.constraints = RigidbodyConstraints2D.FreezePositionX;
-        boxCollider.offset = new Vector2 ((float)-0.1, 1);
-        boxCollider.size = new Vector2 ((float)0.6, (float)2.001);
+        boxCollider.offset = new Vector2((float)-0.1, 1);
+        boxCollider.size = new Vector2((float)0.6, (float)2.001);
 
         ctx.rb = rb;
         ctx.animator = animator;
@@ -36,8 +38,6 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (input != null) ctx.input = input;
-
         // input buffer consumption example
         if (input.HasJumpBuffer)
         {
@@ -52,8 +52,25 @@ public class Player : MonoBehaviour
         }
 
         machine.Tick(Time.deltaTime);
+
+        var path = StatePath(machine.Root.Leaf());
+        if (path != lastPath)
+        {
+            Debug.Log($"Player State: {path}");
+            lastPath = path;
+        }
     }
 
+
+    static string StatePath(State s)
+    {
+        var path = "";
+        foreach (var state in s.PathToRoot())
+        {
+            path = state.GetType().Name + (path == "" ? "" : " -> ") + path;
+        }
+        return path;
+    }
 }
 
 [Serializable]
@@ -62,7 +79,11 @@ public class PlayerContext
     public Rigidbody2D rb;
     public Animator animator;
     public BoxCollider2D boxCollider;
-    public IInputProvider input;
+
+    public bool isGrounded;
+    public bool hasJumpBuffer;
+    public bool hasDashBuffer;
+    public Vector2 moveInput;
 
     public float jumpForce = 10f;
     public float moveSpeed = 5f;
